@@ -18,8 +18,7 @@
 /**
  * Include the SDK by using the autoloader from Composer.
  */
-require __DIR__.'/../vendor/autoload.php';
-
+require '/var/www/ebay-sdk-examples/vendor/autoload.php';
 /**
  * Include the configuration values.
  *
@@ -29,8 +28,7 @@ require __DIR__.'/../vendor/autoload.php';
  * For more information about getting your application keys, see:
  * http://devbay.net/sdk/guides/application-keys/
  */
-$config = require __DIR__.'/../configuration.php';
-
+$config = require '/var/www/ebay-sdk-examples/configuration.php';
 /**
  * The namespaces provided by the SDK.
  */
@@ -45,10 +43,10 @@ use \DTS\eBaySDK\Trading\Types;
  * http://devbay.net/sdk/guides/getting-started/#service-object
  */
 $service = new Services\TradingService(array(
-    'apiVersion' => $config['tradingApiVersion'],
     'siteId' => Constants\SiteIds::US
 ));
 
+echo "1";
 /**
  * Create the request object.
  *
