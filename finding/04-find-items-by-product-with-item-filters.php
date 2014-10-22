@@ -1,3 +1,6 @@
+<html>
+<head></head>
+<body>
 <?php
 /**
  * Copyright 2014 David T. Sadler
@@ -91,7 +94,7 @@ $request->itemFilter[] = new Types\ItemFilter(array(
 
 $request->itemFilter[] = new Types\ItemFilter(array(
     'name' => 'MaxPrice',
-    'value' => array('10.00')
+    'value' => array('20.00')
 ));
 
 /**
@@ -150,7 +153,7 @@ if ($response->ack !== 'Failure') {
 /**
  * Paginate through 2 more pages worth of results.
  */
-$limit = min($response->paginationOutput->totalPages, 3);
+$limit = min($response->paginationOutput->totalPages, 5);
 for ($pageNum = 2; $pageNum <= $limit; $pageNum++ ) {
     $request->paginationInput->pageNumber = $pageNum;
 
@@ -169,3 +172,5 @@ for ($pageNum = 2; $pageNum <= $limit; $pageNum++ ) {
         }
     }
 }
+</body>
+</html>
