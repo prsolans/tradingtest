@@ -69,6 +69,16 @@ $request->keywords = 'Harry Potter';
 $request->paginationInput = new Types\PaginationInput();
 $request->paginationInput->entriesPerPage = 10;
 
+$request->itemFilter[] = new Types\ItemFilter(array(
+    'name' => 'MinPrice',
+    'value' => array('50.00')
+));
+
+$request->itemFilter[] = new Types\ItemFilter(array(
+    'name' => 'MaxPrice',
+    'value' => array('100.00')
+));
+
 /**
  * Paginate through 3 pages worth of results. (Does assume there are enough results for 3 pages!)
  */
