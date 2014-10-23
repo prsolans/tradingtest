@@ -106,7 +106,7 @@ $request->sortOrder = 'CurrentPriceHighest';
  * Limit the results to 10 items per page and start at page 1.
  */
 $request->paginationInput = new Types\PaginationInput();
-$request->paginationInput->entriesPerPage = 10;
+$request->paginationInput->entriesPerPage = 50;
 $request->paginationInput->pageNumber = 1;
 
 /**
@@ -137,42 +137,42 @@ printf("%s items found over %s pages.\n\n",
     $response->paginationOutput->totalPages
 );
 
-echo "==================\nResults for page 1\n==================\n";
+// echo "==================\nResults for page 1\n==================\n";
 
-if ($response->ack !== 'Failure') {
-    foreach ($response->searchResult->item as $item) {
-        printf("(%s) %s: %s %.2f\n",
-            $item->itemId,
-            $item->title,
-            $item->sellingStatus->currentPrice->currencyId,
-            $item->sellingStatus->currentPrice->value
-        );
-    }
-}
+// if ($response->ack !== 'Failure') {
+//     foreach ($response->searchResult->item as $item) {
+//         printf("(%s) %s: %s %.2f\n",
+//             $item->itemId,
+//             $item->title,
+//             $item->sellingStatus->currentPrice->currencyId,
+//             $item->sellingStatus->currentPrice->value
+//         );
+//     }
+// }
 
-/**
- * Paginate through X more pages worth of results.
- */
-$numPages = 25;
-$limit = min($response->paginationOutput->totalPages, $numPages);
-for ($pageNum = 2; $pageNum <= $limit; $pageNum++ ) {
-    $request->paginationInput->pageNumber = $pageNum;
+// /**
+//  * Paginate through X more pages worth of results.
+//  */
 
-    $response = $service->findItemsByProduct($request);
+// $limit = $response->paginationOutput->totalPages;
+// for ($pageNum = 2; $pageNum <= $limit; $pageNum++ ) {
+//     $request->paginationInput->pageNumber = $pageNum;
 
-    echo "==================\nResults for page $pageNum\n==================\n";
+//     $response = $service->findItemsByProduct($request);
 
-    if ($response->ack !== 'Failure') {
-        foreach ($response->searchResult->item as $item) {
-            printf("(%s) %s: %s %.2f\n",
-                $item->itemId,
-                $item->title,
-                $item->sellingStatus->currentPrice->currencyId,
-                $item->sellingStatus->currentPrice->value
-            );
-        }
-    }
-}
+//     echo "==================\nResults for page $pageNum\n==================\n";
+
+//     if ($response->ack !== 'Failure') {
+//         foreach ($response->searchResult->item as $item) {
+//             printf("(%s) %s: %s %.2f\n",
+//                 $item->itemId,
+//                 $item->title,
+//                 $item->sellingStatus->currentPrice->currencyId,
+//                 $item->sellingStatus->currentPrice->value
+//             );
+//         }
+//     }
+// }
 ?>
 </body>
 </html>
