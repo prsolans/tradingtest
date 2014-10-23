@@ -151,9 +151,10 @@ if ($response->ack !== 'Failure') {
 }
 
 /**
- * Paginate through 2 more pages worth of results.
+ * Paginate through X more pages worth of results.
  */
-$limit = min($response->paginationOutput->totalPages, 5);
+$numPages = 25;
+$limit = min($response->paginationOutput->totalPages, $numPages);
 for ($pageNum = 2; $pageNum <= $limit; $pageNum++ ) {
     $request->paginationInput->pageNumber = $pageNum;
 
@@ -172,5 +173,6 @@ for ($pageNum = 2; $pageNum <= $limit; $pageNum++ ) {
         }
     }
 }
+?>
 </body>
 </html>
