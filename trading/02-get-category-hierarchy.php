@@ -70,7 +70,6 @@ $request->RequesterCredentials->eBayAuthToken = $config['production']['userToken
  * By specifying 'ReturnAll' we are telling the API return the full category hierarchy.
  */
 $request->DetailLevel = array('ReturnAll');
-
 /**
  * OutputSelector can be used to reduce the amount of data returned by the API.
  * http://developer.ebay.com/DevZone/XML/docs/Reference/ebay/GetCategories.html#Request.OutputSelector
@@ -107,11 +106,15 @@ if ($response->Ack !== 'Success') {
      * For the US site this will output approximately 18,000 categories.      
      */
     foreach ($response->CategoryArray->Category as $category) {
-        printf("Level %s : %s (%s) : Parent ID %s\n", 
-            $category->CategoryLevel,
-            $category->CategoryName,
-            $category->CategoryID,
-            $category->CategoryParentID[0]
-        );
+//        printf("Level %s : %s (%s) : Parent ID %s\n", 
+  //          $category->CategoryLevel,
+    //        $category->CategoryName,
+      //      $category->CategoryID,
+        //    $category->CategoryParentID[0],
+	  //  $category->MinimumReservePrice
+       // );
+$output = print_r($response, true);
+file_put_contents('categories.txt', $output);
+
     }
 }

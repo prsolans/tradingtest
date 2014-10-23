@@ -113,7 +113,7 @@ for ($pageNum = 1; $pageNum <= 3; $pageNum++ ) {
             printf("(%s) %s: %s %.2f\n",
                 $item->itemId,
                 $item->title,
-                $item->bidCount,
+                $item->sellingStatus->bidCount,
                 $item->sellingStatus->currentPrice->currencyId,
                 $item->sellingStatus->currentPrice->value
             );
