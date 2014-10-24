@@ -113,7 +113,7 @@ if ($response->Ack !== 'Success') {
         //    $category->CategoryParentID[0],
 	  //  $category->MinimumReservePrice
        // );
-$output = print_r($response, true);
+$output = print_r(json_encode($response), true);
 file_put_contents('categories.txt', $output);
 
     }
